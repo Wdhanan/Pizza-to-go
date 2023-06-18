@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+<link rel="icon" type="image/x-icon"
+	href="https://cdn.pixabay.com/photo/2017/01/31/15/07/green-pepper-2024889_960_720.png">
+
+<title>PIZZA TO GO</title>
+<script src="js/mainPage.js"></script>
+<script src="js/checkRegisterInput.js"></script>
+<script src="js/userAccess.js"></script>
+<script src="js/manageViews.js"></script>
+<script src="js/checkOrder.js"></script>
+<script src="js/shoppingCart.js"></script>
+
+</head>
+
+<body>
+
+	<div class="div-main-container">
+
+		<header>
+			<span id="pizza-to-go">PIZZA TO GO</span>
+
+			<div id="div-logged-in" class="divLoggedIn">
+
+				<table style="float: right; font-size: 20px;">
+					<tr>
+						<td class="current-name">Willkommen</td>
+						<td>&nbsp;</td>
+						<td class="current-name" id="current-name"></td>
+						<td>&nbsp;</td>
+						<td>
+							<input id="logoutBtn" type="image" src="icons/logout.png">
+						</td>
+
+					</tr>
+				</table>
+
+			</div>
+
+		</header>
+
+		<div id="div-login" class="div-login">
+			<div id="div-login-table" class="div-login-table">
+
+				<table>
+					<tr>
+						<td><p class="title">Anmelden</p></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input id="login-username"
+							class="form-control" size="40" type="text"
+							placeholder="Benutzername" required /></td>
+					</tr>
+
+					<tr>
+						<td style="padding-bottom: 1rem"><input id="login-password"
+							class="form-control" size="40" type="password"
+							placeholder="Passwort" required /></td>
+
+					</tr>
+					<tr>
+						<td style="padding-bottom: 2rem">
+							<button id="loginBtn" class="form-control btn">Anmelden</button>
+						</td>
+					</tr>
+					<tr>
+						<td><p style="color: white; text-align: center;">-Noch
+								kein Konto?-</p></td>
+					</tr>
+					<tr>
+						<td><button id="registerLink"
+								class="form-control btn btn-primary">Registrieren</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+		<aside>
+			<div class="div-right-bar" id="div-right-bar" style="width: 25em">
+				<div class="shipping-address" id="shipping-address">
+					<h1>Meine Lieferadresse</h1>
+					<table class="table-inner-right-bar">
+						<tr>
+							<td class="td-current-address" id="table-data-first-and-lastname"></td>
+						</tr>
+						<tr>
+							<td class="td-current-address" id="table-data-street-housenumber"></td>
+						</tr>
+						<tr>
+							<td class="td-current-address" id="table-data-my-zip-city"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="current-shopping-cart" id="current-shopping-cart">
+					<h1>Warenkorb</h1>
+                    <div id="div-all-orders"></div>
+					<h2>Gesamtpreis: <div class = "distance distance" id="div-over-all-price"></div></h2>
+					<button id="orderBtn" class="form-control btn"> Bestellen</button>
+					<button id="deleteOrderBtn" class="form-control btn"> Warenkorb löschen</button>
+
+
+				</div>
+			</div>
+		</aside>
+
+		<div id="div-logged-in-view" class="divLoggedInView">
+			<div class="divLoggedInRight">
+				<div>
+					<p class="title smallerText">Wählen Sie Ihre gewünschte Größe
+						aus:</p>
+					<div class="checkboxes">
+						<div class="distance">
+							<label class="radioLabl"> <input type="radio"
+								class="pizzaSize" name="pizzaSize" value="small" id="pizzaSmall"
+								onchange="checkCurrentPrice()" checked>
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/pizza_small.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Klein</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+
+							<label class="radioLabl"> <input type="radio"
+								class="pizzaSize" name="pizzaSize" value="medium"
+								id="pizzaMedium" onchange="checkCurrentPrice()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/pizza_medium.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Mittel</div>
+								</div>
+							</label>
+
+						</div>
+
+						<label class="radioLabl"> <input type="radio"
+							class="pizzaSize" name="pizzaSize" value="big" id="pizzaBig"
+							onchange="checkCurrentPrice()">
+							<div class="checkboxDiv">
+								<image class="checkboxImage" src="icons/pizza.png"
+									for="pizzaSmall" width="60" length="60"></image>
+								<div class="textLabel">Groß</div>
+							</div>
+						</label>
+					</div>
+
+					<div class="distance distance"></div>
+
+					<p class="title smallerText">Wählen Sie Ihre gewünschten Beläge
+						aus (maximal 5):</p>
+
+					<div class="checkboxes">
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Käse" id="cheese"
+								onclick=" return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/cheese.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Käse</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Schinken" id="ham"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/ham.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Schinken</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Salami" id="salami"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/salami.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Salami</div>
+								</div>
+							</label>
+						</div>
+
+						<label class="labl"> <input type="checkbox" name="topping"
+							value="Oliven" id="olive" onclick="return checkToppings()">
+							<div class="checkboxDiv">
+								<image class="checkboxImage" src="icons/olives.png"
+									for="pizzaSmall" width="60" length="60"></image>
+								<div class="textLabel">Oliven</div>
+							</div>
+						</label>
+
+					</div>
+
+					<div class="checkboxes">
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Paprika" id="paprika"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/paprika.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Paprika</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Pilze" id="mushrooms"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/champignon.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Pilze</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Ananas" id="pineapple"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/pineapple.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Ananas</div>
+								</div>
+							</label>
+						</div>
+
+						<label class="labl"> <input type="checkbox" name="topping"
+							value="Spiegelei" id="egg" onclick="return checkToppings()">
+							<div class="checkboxDiv">
+								<image class="checkboxImage" src="icons/fried-egg.png"
+									for="pizzaSmall" width="60" length="60"></image>
+								<div class="textLabel">Spiegelei</div>
+							</div>
+						</label>
+
+					</div>
+
+					<div class="checkboxes">
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Zwiebeln" id="onions"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/onion.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Zwiebeln</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Bacon" id="bacon"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/bacon.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Bacon</div>
+								</div>
+							</label>
+						</div>
+
+						<div class="distance">
+							<label class="labl"> <input type="checkbox"
+								name="topping" value="Chili" id="chili"
+								onclick="return checkToppings()">
+								<div class="checkboxDiv">
+									<image class="checkboxImage" src="icons/chili.png"
+										for="pizzaSmall" width="60" length="60"></image>
+									<div class="textLabel">Chili</div>
+								</div>
+							</label>
+						</div>
+
+						<label class="labl"> <input type="checkbox" name="topping"
+							value="Thunfisch" id="tuna" onclick="return checkToppings()">
+							<div class="checkboxDiv">
+								<image class="checkboxImage" src="icons/tuna.png"
+									for="pizzaSmall" width="60" length="60"></image>
+								<div class="textLabel">Thunfisch</div>
+							</div>
+						</label>
+
+					</div>
+
+					<div class="distance distance"></div>
+
+					<div>
+					<p id="div-current-pizza-price" class="title smallerText">&nbsp;</p>
+					<button id="addToShoppingCartBtn" class="form-control btn"
+							role="button">Zum Warenkorb hinzufügen</button>
+						</div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div id="div-overlay" class="div-login">
+			<div id="div-registration" class="div-login-table">
+				<table>
+					<tr>
+						<td><p
+								style="font-size: 25px; text-align: center; color: white">Registrieren</p></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="text"
+							name="vname" id="vname" size="40" class="form-control"
+							onkeyup="checkVName()" onfocus="checkVName()"
+							placeholder="Vorname" required></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="text"
+							name="nname" id="nname" size="40" class="form-control"
+							onkeyup="checkNName()" onfocus="checkNName()"
+							placeholder="Nachname"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="text"
+							name="street" id="street" size="24" class="form-control"
+							onkeyup="checkStreet()" onfocus="checkStreet()"
+							onblur="checkStreet()" placeholder="Straße"><span
+							style="float: right;"><input type="text"
+								name="housenumber" id="housenumber" size="5"
+								class="form-control" onkeyup="checkHouseNumber()"
+								onfocus="checkHouseNumber()"
+								placeholder="Hausnr."> </span></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="text"
+							name="postcode" id="postcode" size="5"
+							class="form-control" onkeyup="checkPostCode()" onfocus="checkPostCode()" placeholder="PLZ">
+							<span style="float: right;"><input type="text" name="city"
+								id="city" size="24" class="form-control" onkeyup="checkCity()" onfocus="checkCity()" placeholder="Stadt">
+						</span></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="tel"
+							name="telphone" id="telphone" size="40" class="form-control" onkeyup="checkTel()" onfocus="checkTel()"
+							placeholder="Telefon"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="text"
+							id="userOwnName" name="userid" size="40" class="form-control"
+							onkeyup="checkUserName()" onfocus="checkUserName()"
+							placeholder="Benutzername"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="email"
+							name="email" id="email" size="40" class="form-control"
+							onkeyup="checkMail()" onfocus="checkMail()"
+							placeholder="E-Mail"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem"><input type="password"
+							id="registerPasswd" name="password" size="40"
+							class="form-control" onkeyup="checkPassword()" onfocus="checkPassword()"
+							placeholder="Passwort"></td>
+					</tr>
+					<tr>
+						<td style="padding-bottom: 1rem">
+							<button type="submit" class="form-control btn"
+								disabled="disabled" id="registerBtn">Registrieren</button>&emsp;
+							<button id="closeButton" class="form-control btn">Abbrechen</button>
+						</td>
+					</tr>
+
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

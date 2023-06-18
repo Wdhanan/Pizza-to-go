@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+ db_pizza_to_go:
+  image: mariadb:10.9.4
+  restart: unless-stopped
+  container_name: pizza_to_go
+  ports:
+   - 3307:3306
+  volumes:
+   - ./pizza_to_go/docker_file_pizza_to_go/init_db/:/docker-entrypoint-initdb.d/
+  environment:
+   - MARIADB_DATABASE=pizza_to_go
+   - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
+ db_user_management:
+  image: mariadb:10.9.4
+  restart: unless-stopped
+  container_name: user_management
+  ports:
+   - 3306:3306
+  volumes:
+   - ./user_management/docker_file_user_management/init_db/:/docker-entrypoint-initdb.d/
+  environment:
+   - MARIADB_DATABASE=user_management
+   - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="${project.name}">
+
+    <featureManager>
+        <feature>microProfile-4.1</feature>
+        <feature>jpa-2.2</feature>
+        <feature>transportSecurity-1.0</feature>        
+    </featureManager>
+    
+
+	<httpEndpoint id="defaultHttpEndpoint"
+				  host="0.0.0.0"
+                  httpPort="9081"
+                  httpsPort="9443"/>
+
+    <webApplication location="${project.name}.war" contextRoot="${app.context.root}">
+        <classloader apiTypeVisibility="+third-party" />
+    </webApplication>
+    <mpMetrics authentication="false"/>
+
+    <!-- This is the keystore that will be used by SSL and by JWT. -->
+    <keyStore id="defaultKeyStore" location="public.jks" type="JKS" password="atbash" />
+    <ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" trustDefaultCerts="true"/>
+
+	<library id="jdbcLib">
+    	<fileset dir="${server.config.dir}" includes="*.jar"/>
+    </library>
+    
+    <dataSource id="mysql" jndiName="jdbc/mysql">
+        <jdbcDriver libraryRef="jdbcLib"/>
+        <properties databaseName="pizza_to_go"
+                    serverName="localhost"
+                    portNumber="3307"
+                    user="root"
+                    password=""/>
+    </dataSource>
+
+    <!-- The MP JWT configuration that injects the caller's JWT into a ResourceScoped bean for inspection. -->
+    <mpJwt id="jwtUserConsumer" keyName="theKeyId" audiences="targetService" issuer="${jwt.issuer}"/>
+
+</server>

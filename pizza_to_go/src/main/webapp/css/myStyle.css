@@ -1,0 +1,324 @@
+@charset "UTF-8";
+
+.div-main-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-columns: 1fr min-content;
+    grid-template-areas: "head      head" "pizza_information       aside";
+    grid-template-rows: 50px auto;
+}
+
+@media ( min-width: 1000px) {
+    .div-main-container {
+        height: 100vh;
+        grid-template-rows: 50px auto;
+        grid-template-columns: 1fr min-content;
+        grid-template-areas: "head      head"
+			"pizza_information       aside";
+    }
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  	font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    grid-area: pizza_information;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    padding: 15px;
+    background-color: #0c0c0c;
+    /*align-items: center;*/
+    grid-area: head;
+    z-index: 910;
+    height: 60px;
+    box-shadow: 3px 4px 19px 7px rgba(0, 0, 0, 0.97);
+}
+
+aside {
+    background-color: #1D1D1D;
+    color: white;
+    grid-area: aside;
+    z-index: 900;
+    box-shadow: 3px 4px 19px 7px rgba(0, 0, 0, 0.97);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 25px;
+    padding-left: 15px;
+    padding-top: 40px;
+}
+
+h2 {
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+h3 {
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+.h2InsideTable {
+    font-size: 25px;
+}
+
+.table-inner-right-bar {
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.tableSearchResult {
+    padding-left: 15px;
+    padding-top: 3px;
+}
+
+.div-login {
+	height: 100%;
+    display: grid;
+    background-image: url("pizza_table.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+    grid-template-rows: 100%;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "left      right";
+}
+
+.div-login-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+	grid-area: right;
+}
+
+.form-control {
+  background: transparent;
+  border: none;
+  height: 50px;
+  color: white !important;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+  .form-control:hover, .form-control:focus {
+    background: transparent;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.4); }
+  .form-control:focus {
+    border-color: rgba(255, 255, 255, 0.4); }
+
+textarea.form-control {
+  height: inherit !important; }
+
+.btn {
+  cursor: pointer;
+  border-radius: 40px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  text-transform: uppercase;
+  background: #0c0c0c !important;
+  border: 1px solid #0c0c0c !important;
+  color: white !important;
+}
+
+.btn:disabled,
+.btn[disabled]{
+  cursor: default;
+  border-radius: 40px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  text-transform: uppercase;
+  background: #404040 !important;
+  border: 1px solid #404040 !important;
+  color: white !important;
+    grid-area: right;
+}
+
+.current-name{
+    color: white;
+}
+
+#field-set-size{
+    width: 20em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+#field-set-topping{
+    width: 20em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+}
+
+#div-current-pizza-price{
+    margin-left: 1em;
+}
+
+#addToShoppingCartBtn{
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+#field-set-pizza-configuration{
+    width: 25em;
+}
+
+#pizza-to-go {
+    float: left;
+    font-size: 25px;
+    padding: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.divLoggedInView {
+    display: grid;
+    background-image: url("pizza_table_short.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+    grid-template-rows: 100%;
+    grid-template-columns: 25% 75%;
+    grid-template-areas: "left      right";
+}
+
+.divLoggedInRight {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	grid-area: right;
+}
+
+.add-to-shopping-cart-btn {
+    margin-top: 1em;
+}
+
+
+#loginBtn, #registerLink, #addToShoppingCartBtn {
+    width: 100%;
+}
+
+#registerBtn, #closeButton {
+	width: 45%;
+}
+
+.searchResults {
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.td-current-address{
+    font-size: 20px;
+}
+ 
+ .checkboxes {
+	margin-bottom: 10px;
+}
+
+.radioLabl {
+    display : inline-block;
+    width: 203px;
+    border-radius: 40px;
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.radioLabl > input{
+    visibility: hidden;
+    position: absolute;
+}
+
+.radioLabl > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.radioLabl > input:checked + div {
+	background: transparent;
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.labl {
+    display : inline-block;
+    width: 150px;
+    border-radius: 40px;
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.labl > input{
+    visibility: hidden;
+    position: absolute;
+}
+
+.labl > input + div{ /* DIV STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.labl > input:checked + div {
+	background: transparent;
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.checkboxDiv {
+	background: rgba(255, 255, 255, 0.08);
+	border-radius: 40px;
+	padding: 10px;
+	text-align:center;
+    display:block;
+}
+
+.checkboxImage {
+	 filter: invert(100%);
+}
+
+.distance {
+	display:inline-block;
+	padding-right: 10px;
+}
+
+.title {
+	font-size: 25px; 
+	text-align: center; 
+	color: white
+}
+
+.smallerText {
+	font-size: 20px;
+}
+
+.paddingBetweenRadioAndCheckbox {
+	padding-top: 20px; 
+}
+
+#orderBtn, #deleteOrderBtn{
+    margin: 1em;
+    width: 89%;
+}
