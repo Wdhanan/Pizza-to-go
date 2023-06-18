@@ -1,1 +1,1 @@
-# Hettel-Teamprojekt-TeamB-WS2022
+# Hettel-Teamprojekt-WS2022
